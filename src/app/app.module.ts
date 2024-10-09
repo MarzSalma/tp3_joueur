@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { JoueursComponent } from './joueurs/joueurs.component';
 import { AddJoueurComponent } from './add-joueur/add-joueur.component';
 import { FormsModule } from '@angular/forms';
+import { UpdateJoueurComponent } from './update-joueur/update-joueur.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JoueursComponent,
-    AddJoueurComponent
+    AddJoueurComponent,
+    UpdateJoueurComponent
   ],
   imports: [
     BrowserModule,

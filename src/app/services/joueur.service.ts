@@ -6,6 +6,8 @@ import { Joueur } from '../model/joueur.model';
 })
 export class JoueurService {
   joueurs: Joueur[];
+  joueur!: Joueur;
+
   constructor() {
     this.joueurs = [
       {
@@ -43,5 +45,25 @@ export class JoueurService {
     if (index > -1) {
       this.joueurs.splice(index, 1);
     }
+  }
+  consulterJoueur(id: number): Joueur {
+    this.joueur = this.joueurs.find((j) => j.idJoueur == id)!;
+    return this.joueur;
+  }
+  trierJoueurs() {
+    this.joueurs = this.joueurs.sort((n1, n2) => {
+      if (n1.idJoueur! > n2.idJoueur!) {
+        return 1;
+      }
+      if (n1.idJoueur! < n2.idJoueur!) {
+        return -1;
+      }
+      return 0;
+    });
+  }
+  updateJoueur(j: Joueur) {
+    this.supprimerJoueur(j);
+    this.ajouterJoueur(j);
+    this.trierJoueurs();
   }
 }

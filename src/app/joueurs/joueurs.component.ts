@@ -8,7 +8,7 @@ import { JoueurService } from '../services/joueur.service';
 })
 export class JoueursComponent implements OnInit {
   joueurs?: Joueur[];
-
+  currentJoueur?: Joueur;
   constructor(private joueurService: JoueurService) {}
 
   ngOnInit(): void {
@@ -18,5 +18,9 @@ export class JoueursComponent implements OnInit {
     //console.log(j);
     let conf = confirm('Etes-vous sûr ?');
     if (conf) this.joueurService.supprimerJoueur(j);
+  }
+  updateJoueur(j: Joueur) {
+    this.currentJoueur = j; // Assign the joueur to currentJoueur
+    this.joueurService.updateJoueur(this.currentJoueur);
   }
 }
